@@ -7,16 +7,28 @@
     "@types/node": "11.11.3",
     "@types/react": "16.8.8",
     "@types/react-dom": "16.8.2",
+    "clean-css-cli": "^4.2.1",
+    "npm-run-all": "^4.1.5",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "react-scripts": "2.1.8",
+    "rimraf": "^2.6.3",
+    "sass": "^1.17.3",
     "typescript": "3.3.3333"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "build:css": "npm run minify:css",
+    "build:js": "react-scripts build",
+    "build:all": "npm-run-all build:css build:js",
+    "build": "npm run build:all",
+    "clean:css": "rimraf public/vendor.css",
+    "eject": "react-scripts eject",
+    "minify:css": "cleancss -O2 -o vendor.min.css dist/vendor.css --source-map --inline all",
+    "scss:compile": "sass scss/base.scss public/vendor.css -c",
+    "start:all": "npm-run-all clean:css scss:compile start:server",
+    "start:server": "react-scripts start",
+    "start": "npm run start:all",
+    "test": "react-scripts test"
   },
   "eslintConfig": {
     "extends": "react-app"

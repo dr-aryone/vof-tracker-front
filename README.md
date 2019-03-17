@@ -1,3 +1,6 @@
+[![CircleCI](https://circleci.com/gh/theghostyced/vof-tracker-front.svg?style=svg)](https://circleci.com/gh/theghostyced/vof-tracker-front)
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
